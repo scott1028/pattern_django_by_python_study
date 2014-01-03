@@ -44,11 +44,40 @@ urls.py 範本
 		url(r'^admin/', include(admin.site.urls)),
 		# 這是預設的後台。
 
+新增 Model 的步驟
+-----------------
+
+	::
+
+		# model 是放在 app 內的
+		# manage.py startapp books 後會產生一個 books 的資料夾裡面會有一個 models.py 的文件
+		# 在 models.py 內定義一個 Class
+			#
+			class Person(models.Model):
+				first_name = models.CharField(max_length=30)
+				last_name = models.CharField(max_length=30)
+
+		# 然後再 settings.py 內找到：
+			...
+			INSTALLED_APPS = (
+				'django.contrib.admin',
+				'django.contrib.auth',
+				'django.contrib.contenttypes',
+				'django.contrib.sessions',
+				'django.contrib.messages',
+				'django.contrib.staticfiles',
+				'books'         # 把先前使用 manage.py startapp 指令建立的 app 加入
+			)
+			...
+
+		# manage.py syncdb , 透過此指令做 database migration 將資料表建立即可！
+
+
 Extend Package
 --------------
 
 	::
-	
+
 		pip install django-tastypie
 		# Django-tastypie - RestFul Web Service API framework for Django
 

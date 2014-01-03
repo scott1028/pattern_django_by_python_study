@@ -96,6 +96,22 @@
 			...
 			return ...
 
+**Django 專案的主要設定文件(可自行修改)**
+
+	::
+
+		1.manage.py 內有提到：
+			#!/usr/bin/env python
+			import os
+			import sys
+
+			if __name__ == "__main__":
+				# mysite/settings.py 為此 django project 的主要 configure 文件
+			    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+
+			    #
+			    from django.core.management import execute_from_command_line
+			    execute_from_command_line(sys.argv)
 
 **Django shell 操作 ( 類似 rails c )**
 	

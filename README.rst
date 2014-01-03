@@ -1,16 +1,14 @@
 以下逐步教學 Django 專案開發過程
 ================================
 
-建立專案
-- - - - 
+**建立專案**
 	
 	::
 	
 		django-admin.py startproject mysite
 
 
-建立 Feature ( 以 books App為例 )
----------------------------------
+**建立 Feature ( 以 books App為例 )**
 	
 	::
 
@@ -18,15 +16,13 @@
 		manage.py startapp books
 
 
-設定 urls.py
-------------
+**設定 urls.py**
 	
 	::
 
 		# 整個專案的預設讀取 urls.py 位於 startproject_name/urls.py, 即 mysite/mysite/urls.py
 
-urls.py 範本
-------------
+**urls.py 範本**
 
 	::
 
@@ -44,8 +40,7 @@ urls.py 範本
 		url(r'^admin/', include(admin.site.urls)),
 		# 這是預設的後台。
 
-新增 Model 的步驟
------------------
+**新增 Model 的步驟**
 
 	::
 
@@ -72,8 +67,7 @@ urls.py 範本
 
 		# manage.py syncdb , 透過此指令做 database migration 將資料表建立即可！
 
-過濾 views.py 的 POST 或是 GET 方法(預設只能 GET)
--------------------------------------------------
+**過濾 views.py 的 POST 或是 GET 方法(預設只能 GET)**
 
 	::
 
@@ -87,8 +81,7 @@ urls.py 範本
 			return ...
 
 
-關閉 CRSF 與 Ajax Create Record 方法
-------------------------------------
+**關閉 CRSF 與 Ajax Create Record 方法**
 
 	::
 
@@ -103,8 +96,7 @@ urls.py 範本
 			return ...
 
 
-Django shell 操作 ( 類似 rails c )
-----------------------------------
+**Django shell 操作 ( 類似 rails c )**
 	
 	::
 
@@ -117,8 +109,7 @@ Django shell 操作 ( 類似 rails c )
 		>> row.first_name='alan'
 		>> row.save()
 
-Extend Package
---------------
+**Extend Package**
 
 	::
 

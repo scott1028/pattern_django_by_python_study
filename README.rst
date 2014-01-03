@@ -3,20 +3,18 @@
 
 建立專案
 --------
-		django-admin.py startproject mysite
+	django-admin.py startproject mysite
 
 
 建立 Feature ( 以 books App為例 )
 ---------------------------------
-		cd mysite
-		manage.py startapp books
+	cd mysite
+	manage.py startapp books
 
 
 設定 urls.py
 ------------
-	::
-
-		# 整個專案的預設讀取 urls.py 位於 startproject_name/urls.py, 即 mysite/mysite/urls.py
+	# 整個專案的預設讀取 urls.py 位於 startproject_name/urls.py, 即 mysite/mysite/urls.py
 
 urls.py 範本
 ------------

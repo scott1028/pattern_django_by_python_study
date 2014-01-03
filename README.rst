@@ -44,3 +44,11 @@ urls.py 範本
 		url(r'^admin/', include(admin.site.urls)),
 		# 這是預設的後台。
 
+Extend Package
+--------------
+
+	::
+	
+		pip install django-tastypie
+		# Django-tastypie - RestFul Web Service API framework for Django
+

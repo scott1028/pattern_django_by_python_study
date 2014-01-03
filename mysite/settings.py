@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 如果有自己增加 App 要從這邊設定
+# 修改好之後要執行 manage.py syncdb 這個指令類似 rake db:migrate 可以將新增的 app 建立進去
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'books'         # add my app which is created by " manage.py startapp books " command!, 資料庫表單的命名規則為 appName_className, 可透過 manage.py shell 管理操作 Class, 其操作方式類似 rails c
 )
 
 MIDDLEWARE_CLASSES = (

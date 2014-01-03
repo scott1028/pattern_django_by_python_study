@@ -20,3 +20,23 @@ def layout(request):
 	t = get_template('layout.html')
 	html = t.render(Context({'current_date': now}))
 	return HttpResponse(html)
+
+# python object ot json
+# 參考：http://stackoverflow.com/questions/9262278/django-view-returning-json-without-using-template
+from django.core import serializers			# 給 model 用的
+from django.utils import simplejson 		# 簡單的 Python 資料型態轉換用
+
+def get_json(request):
+	#
+	some_data_to_dump = {
+		'some_var_1': 'foo',
+		'some_var_2': 'bar',
+	}
+
+	#
+	data=simplejson.dumps(some_data_to_dump)
+
+	#
+	return HttpResponse(data, mimetype='application/json')
+
+	#return HttpResponse(serializers.get_serializer( "xml", Foo.objects.all() ), content_type="application/json")

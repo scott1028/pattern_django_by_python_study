@@ -77,26 +77,30 @@ urls.py 範本
 
 	::
 
-		1.在 views.py 內引入 from django.views.decorators.http import require_http_methods, 並使用 @require_http_methods(["GET", "POST"]) 來修飾 view 的方法。
+		1.在 views.py 內引入 "from django.views.decorators.http import require_http_methods",
+		  並使用 @require_http_methods(["GET", "POST"]) 來修飾 view 的方法。
 		
 		@csrf_exempt
 		@require_http_methods(["GET", "POST"])
 		def persons(request):
-			....
+			...
+			return ...
 
 
 關閉 CRSF 與 Ajax Create Record 方法
 ------------------------------------
 
 	::
-	
-		1.在 settings.py 遮蔽 'django.middleware.csrf.CsrfViewMiddleware', 可以全域關閉 CRSF。
-		2.在 views.py 內引入 from django.views.decorators.csrf import csrf_exempt, csrf_protect 在使用 @crsf_exempt 修飾該方法可以單獨豁免 CSRF 保護。
+
+		1.在 settings.py 遮蔽 'django.middleware.csrf.CsrfViewMiddleware',可以全域關閉 CRSF。
+		2.在 views.py 內引入 "from django.views.decorators.csrf import csrf_exempt,csrf_protect",
+		  在使用 @crsf_exempt 修飾該方法可以單獨豁免 CSRF 保護。
 
 		@csrf_exempt
 		@require_http_methods(["GET", "POST"])
 		def persons(request):
-			....
+			...
+			return ...
 
 
 Django shell 操作 ( 類似 rails c )

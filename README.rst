@@ -72,6 +72,19 @@ urls.py 範本
 
 		# manage.py syncdb , 透過此指令做 database migration 將資料表建立即可！
 
+Django shell 操作 ( 類似 rails c )
+-----------------------------
+	
+	::
+
+		# 在專案目錄下
+		# /> manage.py shell
+		>> 
+		>> from books.models import *
+		>> row=Person(first_name='scott', last_name='blue')
+		>> row.save()
+		>> row.first_name='alan'
+		>> row.save()
 
 Extend Package
 --------------

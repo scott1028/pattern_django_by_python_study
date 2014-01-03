@@ -42,7 +42,7 @@ def get_json(request):
 
 	#
 	return HttpResponse(data, mimetype='application/json')
-	#return HttpResponse(serializers.get_serializer( "xml", Foo.objects.all() ), content_type="application/json")
+	#return HttpResponse(serializers.serialize( "xml", Person.objects.all() ), content_type="application/json")
 
 #
 # 客戶端提交資料處裡

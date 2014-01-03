@@ -94,6 +94,10 @@ print os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')
 #
 # 增加靜態資料的目錄(爬超久的文...真不知道該說啥 django 的文件也太難找了)
 STATICFILES_DIRS = (
-    os.path.join(os.path.realpath(os.path.dirname(__file__)), 'public'),        # 可以設定多個
+    os.path.join(BASE_DIR, 'public'),        # 可以設定多個
 )
-print os.path.join(os.path.realpath(os.path.dirname(__file__)), 'public')
+print os.path.join(BASE_DIR, 'public')
+
+#
+# 利用最上方的 BASE_DIR 來做路由基礎
+print BASE_DIR

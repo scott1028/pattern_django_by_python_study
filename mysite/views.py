@@ -26,8 +26,7 @@ def layout(request):
 #
 # python object ot json
 # 參考：http://stackoverflow.com/questions/9262278/django-view-returning-json-without-using-template
-from django.core import serializers			# 給 model 用的
-#from django.utils import simplejson 		
+from django.core import serializers			# 給 model 用的		
 import json 								# 簡單的 Python 資料型態轉換用
 
 def get_json(request):
@@ -38,7 +37,7 @@ def get_json(request):
 	}
 
 	#
-	data=simplejson.dumps(some_data_to_dump)
+	data=json.dumps(some_data_to_dump)
 
 	#
 	return HttpResponse(data, mimetype='application/json')

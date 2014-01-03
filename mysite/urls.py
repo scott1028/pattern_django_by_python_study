@@ -18,5 +18,8 @@ urlpatterns = patterns('',
     url(r'^tt$', 'books.views.home'),					# 讓 /tt 網址導向取得 books.views.home 的方法與執行結果
 
     #
+    url(r'^layout$','mysite.views.layout'),             # 採用 mysite/views.py 內的 layout Method 的 Router
+
+    #
     url(r'^admin/', include(admin.site.urls)),			# 預設的後台
 )

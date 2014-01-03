@@ -68,6 +68,22 @@
 
 		# manage.py syncdb , 透過此指令做 database migration 將資料表建立即可！
 
+**增加 Django Admin 後台可見的 Tables**
+
+	::
+
+		# app/admin.py 內增加 Model 註冊：
+			from django.contrib import admin
+
+			# Register your models here.
+			from models import *
+
+			# 定義原本的 Admin Class
+			class AuthorAdmin(admin.ModelAdmin):pass
+
+			# 增加一個 Model 進去, 之後就可以在後台看到了
+			admin.site.register(Person, AuthorAdmin)
+
 **過濾 views.py 的 POST 或是 GET 方法(預設只能 GET)**
 
 	::

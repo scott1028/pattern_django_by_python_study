@@ -9,6 +9,7 @@ def home(request):
 	return HttpResponse('hello world by mysite.books.views.home')
 
 # 給 model 用的
+# 參考：https://docs.djangoproject.com/en/dev/topics/serialization/
 from django.core import serializers
 from models import *
 def persons(request):

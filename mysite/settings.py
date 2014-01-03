@@ -77,13 +77,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
+#
+# 設定靜態資料的路由前奏
 STATIC_URL = '/static/'
 
+#
 # 添加一個 TEMPALTE 的存放 PATH
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 )
+print os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')
+
+#
+# 增加靜態資料的目錄(爬超久的文...真不知道該說啥 django 的文件也太難找了)
+STATICFILES_DIRS = (
+    os.path.join(os.path.realpath(os.path.dirname(__file__)), 'public'),        # 可以設定多個
+)
+print os.path.join(os.path.realpath(os.path.dirname(__file__)), 'public')

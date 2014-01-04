@@ -142,6 +142,16 @@
 		>> row.first_name='alan'
 		>> row.save()
 
+**Django Admin 的使用**
+
+	::
+
+		# 在 /admin 登入, 以 manage.py syncdb 時設定的帳號密碼登入。
+		# 新增 User 後必須勾選, 可登入的選項, 之後該使用者才可以正常登入,
+		  另外 Group 部分可以做使用者權限群組, 基本上很夠用了：
+			[v] 工作人員狀態
+				指定是否使用者可以登入此管理網站。
+
 **Extend Package**
 
 	::

@@ -152,6 +152,9 @@
 			[v] 工作人員狀態
 				指定是否使用者可以登入此管理網站。
 
+			[v] Staff status
+				Designates whether the user can log into this admin site
+
 **Extend Package**
 
 	::

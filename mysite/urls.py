@@ -32,3 +32,13 @@ urlpatterns = patterns('',
     #
     url(r'^admin/', include(admin.site.urls)),			            # 預設的後台
 )
+
+# 引入 setting modules
+# 參考：https://docs.djangoproject.com/en/dev/ref/urls/
+from django.conf import settings
+from django.conf.urls.static import static
+
+# 增加 MEDIA_URL 部分
+# 與 static_url 的差異有點大, STATIC FILE 的設定在 settings.py 內就可以完成了。
+#
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

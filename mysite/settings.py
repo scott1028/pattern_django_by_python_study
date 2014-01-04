@@ -82,11 +82,8 @@ USE_L10N = True
 USE_TZ = True
 
 #
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-#
-# 設定靜態資料的路由前奏
-STATIC_URL = '/static/'
+# 利用最上方的 BASE_DIR 來做路由基礎
+print BASE_DIR
 
 #
 # 添加一個 TEMPALTE 的存放 PATH
@@ -96,12 +93,34 @@ TEMPLATE_DIRS = (
 print os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')
 
 #
-# 增加靜態資料的目錄(爬超久的文...真不知道該說啥 django 的文件也太難找了)
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'public'),        # 可以設定多個
-)
-print os.path.join(BASE_DIR, 'public')
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+#
+# 影響靜態資料存取的 URL 路徑
+# 跟實體位置無關
+STATIC_URL = '/prefix_static_url/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #
-# 利用最上方的 BASE_DIR 來做路由基礎
-print BASE_DIR
+# 影響上傳檔案存取的 URL 路徑
+# 注意：如果沒設定會變成 /admin/books/person/3/images/竹客音Logo2.png
+# 跟實體位置無關
+MEDIA_URL = '/prefix_media_url/'
+# MEDIA_ROOT = ''
+
+#
+# 凡是遇到上傳檔案的的路徑都必須設定這個否則他路徑會變成錯的，例如 //admin/books/person/3/images/sample.png
+# 如果有設定 MEDIA_ROOT 與 MEDIA_URL，就會修正這個錯誤的URL轉為， http://127.0.0.1:3000/media/images/sample.png
+# 其中 /images/ 為 Model 內的 ImageField(path_to='images') 修正。
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#
+# 增加靜態資料的目錄(爬超久的文...真不知道該說啥 django 的文件也太難找了)
+# STATIC_FILE 跟 MEIDA_FILE 的設定方式差異頗大。
+# 參考：https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),        # 提供給 Static App 資料存放, 可以設定多個 App Static File Path
+    #
+    # you can add addition app static file here
+    
+)

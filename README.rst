@@ -155,24 +155,107 @@
 			[v] Staff status
 				Designates whether the user can log into this admin site
 
-**Django Admin Upload Image**
+**Django Staic File(JavaScript, CSS, Images 等) 相關設定**
+
+	::
+
+		# 參考：https://docs.djangoproject.com/en/1.6/howto/static-files/
+		# settings.py 內設定 STATIC_URL(可以設定多個) 與 STATICFILES_DIRS。
+		# 參考範例：
+			BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+			...
+			STATIC_URL = '/static/'
+			STATICFILES_DIRS = (
+			    os.path.join(BASE_DIR, 'public'),		# 可以用來存上傳檔案的路徑
+			)
+
+
+		# 注意與 Media File 的設定不大一樣。
+
+
+**Django Media File(Upload Files, User Images 等) 相關設定**
 	
 	::
 
-		# 參考：https://docs.djangoproject.com/en/dev/ref/models/fields
-		# 
-		# SET VS90COMNTOOLS=%VS110COMNTOOLS% for Unable to find vcvarsall.bat
-		  with Visual Studio 2012。
+		# 參考：https://docs.djangoproject.com/en/dev/ref/models/fields 
+			SET VS90COMNTOOLS=%VS110COMNTOOLS% for Unable to find vcvarsall.bat
+		  	with Visual Studio 2012。
 
 		# 必須先安裝 pip install pillow 與 pip install PIL 兩個套件才可以使用
-		# 在 Model 內定義 Image Field 並設定儲存路徑。
-		# 在 Table 內定義 image Column 並設定為文字。
-		# my model
+			在 Model 內定義 Image Field 並設定儲存路徑。
+			在 Table 內定義 image Column 並設定為文字。
+
+		# models.py
+			...
 			class Person(models.Model):
 				first_name = models.CharField(max_length=30)
 				last_name = models.CharField(max_length=30)
-				# 圖片
-				image=models.ImageField(upload_to='images/')
+
+				# 增加圖片欄位, 並指定實體 Media 儲存路徑。
+				image=models.ImageField(upload_to='images')
+			...
+
+		# 其中 /images/ 為 Model 內的 ImageField(path_to='images') 修正。
+			# settings.py	
+				...
+				MEDIA_URL = '/media/'
+				...
+
+			# urls.py
+			# 參考：https://docs.djangoproject.com/en/dev/ref/urls/
+				...
+				from django.conf import settings
+				from django.conf.urls.static import static
+
+				urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+				...
+
+		# Update Media File 跟 Delete Medai File when removing Record
+			# models.py
+				...
+				class Person(models.Model):
+				    first_name = models.CharField(max_length=30)
+				    last_name = models.CharField(max_length=30)
+				    
+				    # 增加圖片欄位, 並指定實體 Media 儲存路徑。
+				    image=models.ImageField(upload_to='media')
+
+				    # 增加 delete 的 Trigger 當刪除紀錄的時候一併刪除圖片
+				    # 即使沒設定圖片會一直存著, 但是也不會出現其他 Bug。
+				    def delete(self, *args, **kwargs):
+						self.image.delete(False)
+						super(Person, self).delete(*args, **kwargs)
+
+					# 如果執行 Update 的時候要替換 Image 不使用的當案
+				    # 簡單來說就是 Update Image 的時候會刪除舊的 Image File
+				    def save(self, *args, **kwargs):
+				        # delete old file when replacing by updating the file
+				        try:
+				            this = Person.objects.get(id=self.id)
+				            if this.image != self.image:this.image.delete(save=False)
+				        except: pass # when new photo then we do nothing, normal case          
+				        super(Person, self).save(*args, **kwargs)
+				...
+		
+
+**STATIC_URL & MEDIA_URL 在 Django 框架內的原意**
+
+	::
+
+		# settings.py
+		#
+			**MEDIA_URL** is used to point to the base URL for user-generated content - uploaded images, files, that sort of thing.
+			**STATIC_URL** is used as the prefix for JavaScript, CSS, etc.
+
+		# 
+		# urls.py
+			**增加 MEDIA_URL 部分**
+			...
+			from django.conf import settings
+			from django.conf.urls.static import static
+			
+			urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+			...
 
 **Extend Package**
 

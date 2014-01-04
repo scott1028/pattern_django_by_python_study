@@ -1,10 +1,6 @@
-============================
-逐步教學 Django 專案開發過程
-============================
-
-----------------------------------------
+========================================
 這是一個 CRUD 的雛型，可以用開發專案用。
-----------------------------------------
+========================================
 
 **建立專案**
 	
@@ -27,6 +23,7 @@
 
 		# 整個專案的預設讀取 urls.py 位於 startproject_name/urls.py, 即 mysite/mysite/urls.py
 
+
 **urls.py 範本**
 
 	::
@@ -44,6 +41,7 @@
 
 		url(r'^admin/', include(admin.site.urls)),
 		# 這是預設的後台。
+
 
 **新增 Model 的步驟**
 
@@ -72,6 +70,7 @@
 
 		# manage.py syncdb , 透過此指令做 database migration 將資料表建立即可！
 
+
 **增加 Django Admin 後台可見的 Tables**
 
 	::
@@ -87,6 +86,7 @@
 
 			# 增加一個 Model 進去, 之後就可以在後台看到了
 			admin.site.register(Person, AuthorAdmin)
+
 
 **過濾 views.py 的 POST 或是 GET 方法(預設只能 GET)**
 
@@ -116,6 +116,7 @@
 			...
 			return ...
 
+
 **Django 專案的主要設定文件(可自行修改)**
 
 	::
@@ -133,6 +134,7 @@
 			    from django.core.management import execute_from_command_line
 			    execute_from_command_line(sys.argv)
 
+
 **Django shell 操作 ( 類似 rails c )**
 	
 	::
@@ -146,6 +148,7 @@
 		>> row.first_name='alan'
 		>> row.save()
 
+
 **Django Admin 的使用**
 
 	::
@@ -158,6 +161,7 @@
 
 			[v] Staff status
 				Designates whether the user can log into this admin site
+
 
 **Django Staic File(JavaScript, CSS, Images 等) 相關設定**
 
@@ -263,17 +267,19 @@
 			urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 			...
 
+
 **Extend Package**
 
 	::
 
 		pip install django-tastypie
 		# Django-tastypie - RestFul Web Service API framework for Django
+		
 
 **常用的命令**
 	
 	::
-	
+
 		Type 'manage.py help <subcommand>' for help on a specific subcommand.
 
 		Available subcommands:

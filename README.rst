@@ -270,3 +270,52 @@
 		pip install django-tastypie
 		# Django-tastypie - RestFul Web Service API framework for Django
 
+**常用的命令**
+	
+	::
+	
+		Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+		Available subcommands:
+
+		[auth]
+		    changepassword
+		    createsuperuser
+
+		[django]
+		    check
+		    cleanup
+		    compilemessages
+		    createcachetable
+		    dbshell
+		    diffsettings
+		    dumpdata
+		    flush
+		    inspectdb
+		    loaddata
+		    makemessages
+		    runfcgi
+		    shell
+		    sql
+		    sqlall
+		    sqlclear
+		    sqlcustom
+		    sqldropindexes
+		    sqlflush
+		    sqlindexes
+		    sqlinitialdata
+		    sqlsequencereset
+		    startapp
+		    startproject
+		    syncdb
+		    test
+		    testserver
+		    validate
+
+		[sessions]
+		    clearsessions
+
+		[staticfiles]
+		    collectstatic
+		    findstatic
+		    runserver

@@ -155,6 +155,25 @@
 			[v] Staff status
 				Designates whether the user can log into this admin site
 
+**Django Admin Upload Image**
+	
+	::
+
+		# 參考：https://docs.djangoproject.com/en/dev/ref/models/fields
+		# 
+		# SET VS90COMNTOOLS=%VS110COMNTOOLS% for Unable to find vcvarsall.bat
+		  with Visual Studio 2012。
+
+		# 必須先安裝 pip install pillow 與 pip install PIL 兩個套件才可以使用
+		# 在 Model 內定義 Image Field 並設定儲存路徑。
+		# 在 Table 內定義 image Column 並設定為文字。
+		# my model
+			class Person(models.Model):
+				first_name = models.CharField(max_length=30)
+				last_name = models.CharField(max_length=30)
+				# 圖片
+				image=models.ImageField(upload_to='images/')
+
 **Extend Package**
 
 	::

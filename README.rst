@@ -244,10 +244,10 @@
 
 		# settings.py
 		#
-			**MEDIA_URL** is used to point to the base URL for user-generated content
-			   	          such as uploaded images, files, that sort of thing.
-			   	          
-			**STATIC_URL** is used as the prefix for JavaScript, CSS, etc.
+			MEDIA_URL is used to point to the base URL for user-generated content
+			          such as uploaded images, files, that sort of thing.
+
+			STATIC_URL is used as the prefix for JavaScript, CSS, etc.
 
 		# 
 		# urls.py

@@ -236,7 +236,7 @@
 				        except: pass # when new photo then we do nothing, normal case          
 				        super(Person, self).save(*args, **kwargs)
 				...
-		
+
 
 **STATIC_URL & MEDIA_URL 在 Django 框架內的原意**
 
@@ -244,7 +244,9 @@
 
 		# settings.py
 		#
-			**MEDIA_URL** is used to point to the base URL for user-generated content - uploaded images, files, that sort of thing.
+			**MEDIA_URL** is used to point to the base URL for user-generated content
+			   	          such as uploaded images, files, that sort of thing.
+			   	          
 			**STATIC_URL** is used as the prefix for JavaScript, CSS, etc.
 
 		# 

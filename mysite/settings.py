@@ -69,9 +69,11 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# 原本為 us-en
+LANGUAGE_CODE = 'zh-TW'         # 這樣 Django Admin 才會為中文
 
-TIME_ZONE = 'UTC'
+# 原本為 UTC
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 

@@ -122,5 +122,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),        # 提供給 Static App 資料存放, 可以設定多個 App Static File Path
     #
     # you can add addition app static file here
-    
+
 )

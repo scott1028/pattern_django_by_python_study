@@ -246,6 +246,22 @@
 				...
 
 
+**Relational Model 設定範例**
+
+    ::
+
+        如果需要 person hasMany article 參考以下, 只需要設定 ForeignKey 的 Model 即可完成：
+        class Person(models.Model):
+            first_name = models.CharField(max_length=30)
+            last_name = models.CharField(max_length=30)
+
+        class Article(models.Model):
+            title = models.CharField(max_length=30)
+            author = models.ForeignKey(Person,db_column='user_id')
+            # 可以透過 db_column 客製化關聯欄位
+            # 這行會幫 Person 增加 article_set 屬性, Article 增加 author 屬性
+
+
 **STATIC_URL & MEDIA_URL 在 Django 框架內的原意**
 
 	::

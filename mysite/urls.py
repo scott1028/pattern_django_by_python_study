@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^tt$', 'books.views.home'),					            # 讓 /tt 網址導向取得 books.views.home 的方法與執行結果
 
     #
-    url(r'^persons$', 'books.views.persons'),                      # 存取 books app 內的 persons model 資料
+    url(r'^persons$', 'books.views.persons'),                       # 存取 books app 內的 persons model 資料
 
     #
     url(r'^layout$', 'mysite.views.layout'),                        # 採用 mysite/views.py 內的 layout Method 的 Router
@@ -27,10 +27,13 @@ urlpatterns = patterns('',
     url(r'^get_json$', 'mysite.views.get_json'),                    # get_json api
 
     #
-    url(r'^get_or_post$', 'mysite.views.handle_post_and_get'),       # 處理客戶端提交資料
+    url(r'^get_or_post$', 'mysite.views.handle_post_and_get'),      # 處理客戶端提交資料
 
     #
     url(r'^admin/', include(admin.site.urls)),			            # 預設的後台
+
+    #
+    url(r'^prefix/', include('parametertest.urls'))                 # 利用 urls pattern 來配置, 可以組出類似 restful 的 router
 )
 
 # 引入 setting modules
